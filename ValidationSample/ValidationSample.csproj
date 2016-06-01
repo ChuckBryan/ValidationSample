@@ -134,8 +134,8 @@
     </Compile>
     <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validation\RequiredIfClientSideFluentPropertyValidator.cs" />
-    <Compile Include="Validation\RequiredIfClientSideValidator.cs" />
+    <Compile Include="Validation\ProblemTypeRequiredIfClientSideFluentPropertyValidator.cs" />
+    <Compile Include="Validation\ProblemTypeRequiredIfClientSideValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

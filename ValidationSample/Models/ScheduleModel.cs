@@ -38,7 +38,7 @@ namespace ValidationSample.Models
 
                     return false;
                 })
-                .SetValidator(new RequiredIfClientSideValidator("FV - Add Problem Type CS", "ScheduleEnd"));
+                .SetValidator(new ProblemTypeRequiredIfClientSideValidator("FV - Add Problem Type CS", "ScheduleEnd"));
 
         }
 

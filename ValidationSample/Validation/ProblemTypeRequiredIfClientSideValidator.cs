@@ -2,11 +2,11 @@
 
 namespace ValidationSample.Validation
 {
-    public class RequiredIfClientSideValidator : PropertyValidator
+    public class ProblemTypeRequiredIfClientSideValidator : PropertyValidator
     {
         public string DependentProperty { get; set; }
 
-        public RequiredIfClientSideValidator(string errorMessage, string dependentProperty)
+        public ProblemTypeRequiredIfClientSideValidator(string errorMessage, string dependentProperty)
             : base(errorMessage)
         {
             this.DependentProperty = dependentProperty;

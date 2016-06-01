@@ -6,14 +6,14 @@ using FluentValidation.Validators;
 
 namespace ValidationSample.Validation
 {
-    public class RequiredIfClientSideFluentPropertyValidator : FluentValidationPropertyValidator
+    public class ProblemTypeRequiredIfClientSideFluentPropertyValidator : FluentValidationPropertyValidator
     {
-        private RequiredIfClientSideValidator RequiredIfClientSideValidator
+        private ProblemTypeRequiredIfClientSideValidator ProblemTypeRequiredIfClientSideValidator
         {
-            get { return (RequiredIfClientSideValidator)Validator; }
+            get { return (ProblemTypeRequiredIfClientSideValidator)Validator; }
         }
 
-        public RequiredIfClientSideFluentPropertyValidator(ModelMetadata metadata,
+        public ProblemTypeRequiredIfClientSideFluentPropertyValidator(ModelMetadata metadata,
                                                        ControllerContext controllerContext,
                                                        PropertyRule propertyDescription,
                                                        IPropertyValidator validator)
@@ -27,7 +27,7 @@ namespace ValidationSample.Validation
             if (!ShouldGenerateClientSideRules()) yield break;
 
             var formatter = new MessageFormatter().AppendPropertyName(Rule.GetDisplayName());
-            string message = formatter.BuildMessage(RequiredIfClientSideValidator.ErrorMessageSource.GetString());
+            string message = formatter.BuildMessage(ProblemTypeRequiredIfClientSideValidator.ErrorMessageSource.GetString());
 
             var rule = new ModelClientValidationRule()
             {
@@ -36,17 +36,8 @@ namespace ValidationSample.Validation
             };
 
             string depProp = BuildDependentPropertyId(Metadata, ControllerContext as ViewContext);
-            // find the value on the control we depend on;
-            // if it's a bool, format it javascript style 
-            // (the default is True or False!)
-/*
-            string targetValue = (RequiredIfClientSideValidator.TargetValue ?? "").ToString();
-            if (RequiredIfClientSideValidator.TargetValue.GetType() == typeof(bool))
-                targetValue = targetValue.ToLower();
-*/
 
             rule.ValidationParameters.Add("dependentproperty", depProp);
-            //rule.ValidationParameters.Add("targetvalue", targetValue);
 
             yield return rule;
         }
@@ -54,7 +45,7 @@ namespace ValidationSample.Validation
         private string BuildDependentPropertyId(ModelMetadata metadata, ViewContext viewContext)
         {
             // build the ID of the property
-            string depProp = viewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(RequiredIfClientSideValidator.DependentProperty);
+            string depProp = viewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(ProblemTypeRequiredIfClientSideValidator.DependentProperty);
             // unfortunately this will have the name of the current field appended to the beginning,
             // because the TemplateInfo's context has had this fieldname appended to it. Instead, we
             // want to get the context as though it was one level higher (i.e. outside the current property,

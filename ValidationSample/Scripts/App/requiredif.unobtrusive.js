@@ -5,8 +5,6 @@
         var control = $(id);
         var actualvalue = control.val();
 
-        console.log(moment(actualvalue).isValid());
-
         if (!moment(actualvalue).isValid()) {
             return true;
         }
@@ -16,8 +14,6 @@
         }
 
         return true;
-
-
     }
 );
 

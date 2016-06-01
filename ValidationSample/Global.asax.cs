@@ -19,13 +19,13 @@ namespace ValidationSample
 
             FluentValidationModelValidationFactory requiredIfClientSideValidationFactory =
                 (metadata, context, rule, validator) =>
-                    new RequiredIfClientSideFluentPropertyValidator(metadata, context, rule, validator);
+                    new ProblemTypeRequiredIfClientSideFluentPropertyValidator(metadata, context, rule, validator);
 
 
             FluentValidationModelValidatorProvider.Configure(
                 provider =>
                 {
-                    provider.Add(typeof(RequiredIfClientSideValidator), requiredIfClientSideValidationFactory);
+                    provider.Add(typeof(ProblemTypeRequiredIfClientSideValidator), requiredIfClientSideValidationFactory);
                 });
         }
     }
