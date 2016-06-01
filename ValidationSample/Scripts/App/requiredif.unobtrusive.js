@@ -1,4 +1,4 @@
-﻿$.validator.addMethod("requiredif",
+﻿$.validator.addMethod("problemtyperequiredif",
     function(value, element, parameters) {
         var id = "#" + parameters["dependentproperty"];
 
@@ -22,12 +22,12 @@
 );
 
 $.validator.unobtrusive.adapters.add(
-    "requiredif",
+    "problemtyperequiredif",
     ["dependentproperty", "targetvalue"],
     function(options) {
-        options.rules["requiredif"] = {
+        options.rules["problemtyperequiredif"] = {
             dependentproperty: options.params["dependentproperty"],
             targetvalue: options.params["targetvalue"]
         };
-        options.messages["requiredif"] = options.message;
+        options.messages["problemtyperequiredif"] = options.message;
     });

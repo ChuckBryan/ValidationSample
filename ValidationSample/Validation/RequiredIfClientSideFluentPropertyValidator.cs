@@ -31,7 +31,7 @@ namespace ValidationSample.Validation
 
             var rule = new ModelClientValidationRule()
             {
-                ValidationType = "requiredif",
+                ValidationType = "problemtyperequiredif",
                 ErrorMessage = message
             };
 
