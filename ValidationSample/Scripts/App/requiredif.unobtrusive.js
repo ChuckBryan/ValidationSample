@@ -23,11 +23,10 @@
 
 $.validator.unobtrusive.adapters.add(
     "problemtyperequiredif",
-    ["dependentproperty", "targetvalue"],
+    ["dependentproperty"],
     function(options) {
         options.rules["problemtyperequiredif"] = {
-            dependentproperty: options.params["dependentproperty"],
-            targetvalue: options.params["targetvalue"]
+            dependentproperty: options.params["dependentproperty"]
         };
         options.messages["problemtyperequiredif"] = options.message;
     });
