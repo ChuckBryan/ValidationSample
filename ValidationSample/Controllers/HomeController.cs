@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using ValidationSample.Models;
 
 namespace ValidationSample.Controllers
 {
@@ -10,7 +8,24 @@ namespace ValidationSample.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            
+            return View(new ScheduleModel() {ScheduleEnd = DateTime.UtcNow.ToString("o") });
+        }
+
+        [HttpPost]
+        public ActionResult Index(ScheduleModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                // Do Some Stuff...
+            }
+            else
+            {
+                // Log Issues....
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()
